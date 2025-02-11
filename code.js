@@ -9,8 +9,11 @@ const oneHundo = document.getElementById('oneHundo');
 const sizeButton = document.getElementById('size');
 sizeButton.addEventListener('click', makeGrid);
 
+clearButton.addEventListener('click', clear);
 
-
+let r = 1;
+let g = 1;
+let b = 1;
 
 
 function makeGrid(){
@@ -31,16 +34,37 @@ function makeGrid(){
    
     }
 }
+
 function highlight(){
-   this.style.backgroundColor = "black";
+    pickColor();
+    this.style.backgroundColor = pickColor();
 }
 
 function clear(){
     makeGrid();
+    console.log('cleared');
+    console.log(randomNum());
+    console.log(pickColor());
+}
+
+function randomNum(){
+    min = Math.ceil(1);
+    max = Math.floor(255);
+    return Math.floor(Math.random() * (max-min +1)) + min;
+}
+
+function pickColor(){
+     r = randomNum();
+     g = randomNum();
+     b = randomNum();
+
+    return 'rgb('+r+','+g+','+b+')';
+    
 }
 
 
-clearButton.addEventListener('click', clear);
+
+
 
 
 makeGrid();
